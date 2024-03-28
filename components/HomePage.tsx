@@ -15,43 +15,42 @@ import videojs from "video.js";
 
 const features = [
 	{
-	  name: "Match Analysis",
-	  description:
-		"Experience the power of AI with real-time analysis. Get actionable insights on your gameplay to fine-tune your skills, straight from your phone.",
-	  icon: ChartBarIcon,
+		name: "Match Analysis",
+		description:
+			"Experience the power of AI with real-time analysis. Get actionable insights on your gameplay to fine-tune your skills, straight from your phone.",
+		icon: ChartBarIcon,
 	},
 	{
-	  name: "Performance Breakdown",
-	  description:
-		"Unlock the secrets of your strokes with our deep learning models. Gain clarity on your strengths and areas for improvement with our comprehensive stats.",
-	  icon: DevicePhoneMobileIcon,
+		name: "Performance Breakdown",
+		description:
+			"Unlock the secrets of your strokes with our deep learning models. Gain clarity on your strengths and areas for improvement with our comprehensive stats.",
+		icon: DevicePhoneMobileIcon,
 	},
 	{
-	  name: "Achievement Tracking",
-	  description:
-		"Celebrate your progress with our achievement system. Earn medals and accolades as you hit new milestones in your tennis journey.",
-	  icon: CheckBadgeIcon,
+		name: "Achievement Tracking",
+		description:
+			"Celebrate your progress with our achievement system. Earn medals and accolades as you hit new milestones in your tennis journey.",
+		icon: CheckBadgeIcon,
 	},
 	{
-	  name: "Social Leaderboards",
-	  description:
-		"Climb the ranks and show off your improvement! Share your scores, compare with friends, and see where you stand on our global leaderboards.",
-	  icon: UserGroupIcon,
+		name: "Social Leaderboards",
+		description:
+			"Climb the ranks and show off your improvement! Share your scores, compare with friends, and see where you stand on our global leaderboards.",
+		icon: UserGroupIcon,
 	},
 	{
-	  name: "Progress Visualization",
-	  description:
-		"Watch your progress come to life with visual timelines and charts. Track your improvements over time and stay motivated on your path to mastery.",
-	  icon: ChartPieIcon,
+		name: "Progress Visualization",
+		description:
+			"Watch your progress come to life with visual timelines and charts. Track your improvements over time and stay motivated on your path to mastery.",
+		icon: ChartPieIcon,
 	},
 	{
-	  name: "Game Simulation",
-	  description:
-		"Visualize your potential with our simulated game scenarios. Strategize and plan your next moves by studying AI-generated plays.",
-	  icon: GlobeAltIcon,
+		name: "Game Simulation",
+		description:
+			"Visualize your potential with our simulated game scenarios. Strategize and plan your next moves by studying AI-generated plays.",
+		icon: GlobeAltIcon,
 	},
-  ];
-  
+];
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -193,7 +192,7 @@ export default function HomePage() {
 							</div>
 						</div>
 						<div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
-							<svg
+							{/* <svg
 								viewBox="0 0 366 729"
 								role="img"
 								className="mx-auto w-[22.875rem] max-w-full drop-shadow-xl"
@@ -223,7 +222,13 @@ export default function HomePage() {
 										alt=""
 									/>
 								</foreignObject>
-							</svg>
+							</svg> */}
+							<img
+								className="mx-auto h-auto max-w-full drop-shadow-xl"
+								src="/screenshot.png" // Your path to the image
+								alt="App screenshot"
+								style={{ maxWidth: "540px", width: "100%" }} // Set maxWidth to the desired width
+							/>
 						</div>
 					</div>
 				</div>
@@ -320,10 +325,10 @@ export default function HomePage() {
 								{newsletterStatus === "loading"
 									? "Submitting..."
 									: newsletterStatus === "success"
-									? "All set!"
-									: newsletterStatus === "error"
-									? "Error!"
-									: "Notify me"}
+										? "All set!"
+										: newsletterStatus === "error"
+											? "Error!"
+											: "Notify me"}
 							</button>
 						</form>
 						<svg

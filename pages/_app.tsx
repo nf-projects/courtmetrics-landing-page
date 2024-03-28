@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import type {AppProps} from "next/app";
 import {Inter} from "@next/font/google";
 import {Analytics} from "@vercel/analytics/react";
-import "@tremor/react/dist/esm/tremor.css";
 import {useLocalStorage} from "../utils/useLocalStorage";
 import {useEffect} from "react";
 import {useRouter} from "next/router";

@@ -6,8 +6,7 @@ export default function Pricing() {
     return (
         <>
             <Head>
-                <title>MCMetrics - Tools and Metrics to Grow Your Minecraft
-                    Server</title>
+                <title>CourtMetrics - Take your court to the next level.</title>
             </Head>
             <Layout>
                 <PricingPage/>

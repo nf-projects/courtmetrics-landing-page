@@ -1,57 +1,57 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
-	ArrowPathIcon,
-	ChevronRightIcon,
-	CloudArrowUpIcon,
-	Cog6ToothIcon,
-	FingerPrintIcon,
-	LockClosedIcon,
-	ServerIcon,
+	AcademicCapIcon,
+	ChartBarIcon,
+	ChartPieIcon,
+	CheckBadgeIcon,
+	CursorArrowRippleIcon,
+	DevicePhoneMobileIcon,
+	GlobeAltIcon,
+	UserGroupIcon,
 } from "@heroicons/react/20/solid";
 import "video.js/dist/video-js.css";
 import videojs from "video.js";
 
 const features = [
 	{
-		name: "Push to deploy.",
-		description:
-			"Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.",
-		icon: CloudArrowUpIcon,
+	  name: "Match Analysis",
+	  description:
+		"Experience the power of AI with real-time analysis. Get actionable insights on your gameplay to fine-tune your skills, straight from your phone.",
+	  icon: ChartBarIcon,
 	},
 	{
-		name: "SSL certificates.",
-		description:
-			"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-		icon: LockClosedIcon,
+	  name: "Performance Breakdown",
+	  description:
+		"Unlock the secrets of your strokes with our deep learning models. Gain clarity on your strengths and areas for improvement with our comprehensive stats.",
+	  icon: DevicePhoneMobileIcon,
 	},
 	{
-		name: "Simple queues.",
-		description:
-			"Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.",
-		icon: ArrowPathIcon,
+	  name: "Achievement Tracking",
+	  description:
+		"Celebrate your progress with our achievement system. Earn medals and accolades as you hit new milestones in your tennis journey.",
+	  icon: CheckBadgeIcon,
 	},
 	{
-		name: "Advanced security.",
-		description:
-			"Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.",
-		icon: FingerPrintIcon,
+	  name: "Social Leaderboards",
+	  description:
+		"Climb the ranks and show off your improvement! Share your scores, compare with friends, and see where you stand on our global leaderboards.",
+	  icon: UserGroupIcon,
 	},
 	{
-		name: "Powerful API.",
-		description:
-			"Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-		icon: Cog6ToothIcon,
+	  name: "Progress Visualization",
+	  description:
+		"Watch your progress come to life with visual timelines and charts. Track your improvements over time and stay motivated on your path to mastery.",
+	  icon: ChartPieIcon,
 	},
 	{
-		name: "Database backups.",
-		description:
-			"Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ",
-		icon: ServerIcon,
+	  name: "Game Simulation",
+	  description:
+		"Visualize your potential with our simulated game scenarios. Strategize and plan your next moves by studying AI-generated plays.",
+	  icon: GlobeAltIcon,
 	},
-];
+  ];
+  
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
@@ -59,6 +59,38 @@ function classNames(...classes: string[]) {
 
 export default function HomePage() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+	// can be either "idle", "loading", "success", or "error"
+	const [newsletterStatus, setNewsletterStatus] = useState<
+		"idle" | "loading" | "success" | "error"
+	>();
+
+	async function handleNewsletterSubmit(event: any) {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		const email = formData.get("email"); // The name attribute of your input field
+
+		try {
+			setNewsletterStatus("loading"); // Set the status to "loading" before making the API request
+
+			const response = await fetch("/api/newsletter", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email }),
+			});
+
+			const data = await response.json();
+			console.log(data);
+			setNewsletterStatus("success"); // Set the status to "success" after successful API request
+			// Handle success (show message or clear form)
+		} catch (error) {
+			console.error("There was an error submitting the form", error);
+			setNewsletterStatus("error"); // Set the status to "error" if there is an error
+			// Handle error (show error message)
+		}
+	}
 
 	// for the video component
 	useEffect(() => {
@@ -116,7 +148,8 @@ export default function HomePage() {
 					<div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
 						<div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
 							<div className="flex">
-								<div className="relative flex items-center gap-x-4 rounded-full px-4 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+								{/* "We're hiring" section */}
+								{/* <div className="relative flex items-center gap-x-4 rounded-full px-4 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
 									<span className="font-semibold text-indigo-600">
 										We’re hiring
 									</span>
@@ -132,15 +165,17 @@ export default function HomePage() {
 											aria-hidden="true"
 										/>
 									</a>
-								</div>
+								</div> */}
 							</div>
 							<h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-								A better way to ship your projects
+								Take your court to the next level.
 							</h1>
 							<p className="mt-6 text-lg leading-8 text-gray-600">
-								Esse id magna consectetur fugiat non dolor in ad laboris magna
-								laborum ea consequat. Nisi irure aliquip nisi adipisicing veniam
-								voluptate id. In veniam incididunt ex veniam adipisicing sit.
+								Revolutionize your tennis experience with CourtMetrics – the
+								cutting-edge app that turns your smartphone into a powerful
+								sports analyst. Record your matches and let our machine learning
+								technology provide you with comprehensive performance reports.
+								It’s like having a personal coach in your pocket.
 							</p>
 							<div className="mt-10 flex items-center gap-x-6">
 								<a
@@ -200,15 +235,17 @@ export default function HomePage() {
 							{" "}
 							{/* Reduced vertical padding */}
 							<h2 className="text-base font-semibold leading-7 text-indigo-600">
-								Everything you need
+								TECH DEMO
 							</h2>
 							<p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-								No server? No problem.
+								Harness the Power of next-level AI.
 							</p>
 							<p className="mt-6 text-lg leading-8 text-gray-600">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-								Maiores impedit perferendis suscipit eaque, iste dolor
-								cupiditate blanditiis.
+								By employing three sophisticated deep learning models, we
+								analyze thousands of frames from your tennis matches to
+								construct a virtual representation of your match. Our models use
+								this internal simulation to compute a variety of performance
+								metrics, including shot accuracy, speed, and consistency.
 							</p>
 						</div>
 					</div>
@@ -257,9 +294,13 @@ export default function HomePage() {
 							Get notified when we’re launching.
 						</h2>
 						<p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
-							CourtMetrics.net is currently under development. 
+							CourtMetrics.net is currently under development. Be the first to
+							know when we’re ready to serve you (pun intended!)
 						</p>
-						<form className="mx-auto mt-10 flex max-w-md gap-x-4">
+						<form
+							className="mx-auto mt-10 flex max-w-md gap-x-4"
+							onSubmit={handleNewsletterSubmit}
+						>
 							<label htmlFor="email-address" className="sr-only">
 								Email address
 							</label>
@@ -276,7 +317,13 @@ export default function HomePage() {
 								type="submit"
 								className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
 							>
-								Notify me
+								{newsletterStatus === "loading"
+									? "Submitting..."
+									: newsletterStatus === "success"
+									? "All set!"
+									: newsletterStatus === "error"
+									? "Error!"
+									: "Notify me"}
 							</button>
 						</form>
 						<svg

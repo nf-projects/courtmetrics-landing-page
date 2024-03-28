@@ -2,10 +2,10 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 
 const tiers = [
   {
-    name: 'Starter',
+    name: 'Basic',
     id: 'tier-starter',
     href: '#',
-    priceMonthly: '$19',
+    priceMonthly: 'Free',
     description: 'Perfect for individuals looking to get actionable insights and improve their game.',
     features: [
       'Basic match analysis',
@@ -18,10 +18,10 @@ const tiers = [
     mostPopular: false,
   },
   {
-    name: 'Pro',
+    name: 'Plus',
     id: 'tier-pro',
     href: '#',
-    priceMonthly: '$39',
+    priceMonthly: '$19',
     description: 'Ideal for competitive players seeking advanced analytics and social features.',
     features: [
       'Advanced AI analysis',
@@ -33,16 +33,14 @@ const tiers = [
     mostPopular: true,
   },
   {
-    name: 'Elite',
+    name: 'Professional',
     id: 'tier-elite',
     href: '#',
-    priceMonthly: '$59',
+    priceMonthly: '$39',
     description: 'Unlimited access and personalized features for the tennis enthusiast.',
     features: [
       'Unlimited stroke tracking',
-      'AI game simulation features',
       'Personalized coaching insights',
-      'Access to online clinics',
       'Live chat support with 24-hour response time'
     ],
     mostPopular: false,
@@ -93,7 +91,7 @@ export default function PricingPage() {
                 <p className="mt-4 text-sm text-gray-600">{tier.description}</p>
                 <p className="mt-6 flex items-baseline text-4xl font-bold tracking-tight text-gray-900">
                   {tier.priceMonthly}
-                  <span className="ml-1 text-lg font-semibold text-gray-600">/month</span>
+                  <span className="ml-1 text-lg font-semibold text-gray-600">{tier.priceMonthly === 'Free' ? '' : '/mo'}</span>
                 </p>
                 <ul role="list" className="mt-8 space-y-3">
                   {tier.features.map((feature) => (
